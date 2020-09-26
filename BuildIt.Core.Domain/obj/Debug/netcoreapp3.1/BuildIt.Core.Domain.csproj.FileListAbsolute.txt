@@ -1,0 +1,9 @@
+/media/a-bachelet/Projets/BuildIt.Core/BuildIt.Core.Domain/bin/Debug/netcoreapp3.1/BuildIt.Core.Domain.deps.json
+/media/a-bachelet/Projets/BuildIt.Core/BuildIt.Core.Domain/bin/Debug/netcoreapp3.1/BuildIt.Core.Domain.dll
+/media/a-bachelet/Projets/BuildIt.Core/BuildIt.Core.Domain/bin/Debug/netcoreapp3.1/BuildIt.Core.Domain.pdb
+/media/a-bachelet/Projets/BuildIt.Core/BuildIt.Core.Domain/obj/Debug/netcoreapp3.1/BuildIt.Core.Domain.csprojAssemblyReference.cache
+/media/a-bachelet/Projets/BuildIt.Core/BuildIt.Core.Domain/obj/Debug/netcoreapp3.1/BuildIt.Core.Domain.AssemblyInfoInputs.cache
+/media/a-bachelet/Projets/BuildIt.Core/BuildIt.Core.Domain/obj/Debug/netcoreapp3.1/BuildIt.Core.Domain.AssemblyInfo.cs
+/media/a-bachelet/Projets/BuildIt.Core/BuildIt.Core.Domain/obj/Debug/netcoreapp3.1/BuildIt.Core.Domain.csproj.CoreCompileInputs.cache
+/media/a-bachelet/Projets/BuildIt.Core/BuildIt.Core.Domain/obj/Debug/netcoreapp3.1/BuildIt.Core.Domain.dll
+/media/a-bachelet/Projets/BuildIt.Core/BuildIt.Core.Domain/obj/Debug/netcoreapp3.1/BuildIt.Core.Domain.pdb
