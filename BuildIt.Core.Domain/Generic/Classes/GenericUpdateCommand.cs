@@ -6,10 +6,8 @@ namespace BuildIt.Core.Domain.Generic.Classes
 {
     public class GenericUpdateCommand<T> : IRequest<GenericUpdateViewModel<T>> where T : class, new()
     {
-        [FromRoute(Name = "guid")]
-        public Guid Guid { get; set; }
-        
-        [FromBody]
-        public T Data { get; set; }
+        [FromRoute(Name = "guid")] public Guid Guid { get; set; }
+
+        [FromBody] public T Data { get; set; }
     }
 }

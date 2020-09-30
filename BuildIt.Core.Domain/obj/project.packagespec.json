@@ -46,6 +46,18 @@
           "target": "Package",
           "version": "[3.8.0-3.final, )"
         },
+        "Microsoft.EntityFrameworkCore": {
+          "target": "Package",
+          "version": "[3.1.8, )"
+        },
+        "Microsoft.EntityFrameworkCore.Relational": {
+          "target": "Package",
+          "version": "[3.1.8, )"
+        },
+        "Microsoft.EntityFrameworkCore.SqlServer": {
+          "target": "Package",
+          "version": "[3.1.8, )"
+        },
         "PluralizeService.Core": {
           "target": "Package",
           "version": "[1.2.19339.3, )"

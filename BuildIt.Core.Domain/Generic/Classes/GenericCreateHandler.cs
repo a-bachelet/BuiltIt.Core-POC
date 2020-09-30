@@ -1,6 +1,6 @@
-using System;
 using System.Threading;
 using System.Threading.Tasks;
+using BuildIt.Core.Domain.Database;
 using MediatR;
 
 namespace BuildIt.Core.Domain.Generic.Classes
@@ -9,11 +9,24 @@ namespace BuildIt.Core.Domain.Generic.Classes
         where TCommand : GenericCreateCommand<T>
         where T : class, new()
     {
-        public Task<GenericCreateViewModel<T>> Handle(TCommand request, CancellationToken cancellationToken)
+        private readonly GenericDbContext _context;
+
+        public GenericCreateHandler(GenericDbContext context)
         {
-            return Task.Run(() => new GenericCreateViewModel<T>
+            _context = context;
+        }
+
+        public async Task<GenericCreateViewModel<T>> Handle(TCommand request, CancellationToken cancellationToken)
+        {
+            var data = request.Data;
+
+            await _context.Set<T>().AddAsync(data, cancellationToken);
+
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return await Task.Run(() => new GenericCreateViewModel<T>
             {
-                Data = Activator.CreateInstance<T>()
+                Data = data
             }, cancellationToken);
         }
     }

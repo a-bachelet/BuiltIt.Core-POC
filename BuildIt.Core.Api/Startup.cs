@@ -2,7 +2,7 @@ using Autofac;
 using Autofac.Features.Variance;
 using BuildIt.Core.Domain.FeatureProviders;
 using BuildIt.Core.Domain.Generic.Classes;
-using BuildIt.Core.Infrastructure.Database;
+using BuildIt.Core.Domain.Database;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -21,7 +21,7 @@ namespace BuildIt.Core.Api
         {
             _configuration = configuration;
         }
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -33,20 +33,22 @@ namespace BuildIt.Core.Api
 
             services.AddSwaggerGen();
 
-            services.AddDbContextPool<GenericDbContext>(options => options.UseMySql(_configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<GenericDbContext>(options =>
+                options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder
                 .RegisterSource(new ContravariantRegistrationSource());
-            
+
             builder
-                .Register<ServiceFactory>(ctx => {
+                .Register<ServiceFactory>(ctx =>
+                {
                     var c = ctx.Resolve<IComponentContext>();
                     return t => c.Resolve(t);
                 });
-            
+
             builder
                 .RegisterType<Mediator>()
                 .As<IMediator>()
@@ -60,7 +62,7 @@ namespace BuildIt.Core.Api
                 .RegisterGeneric(typeof(GenericGetManyHandler<,>))
                 .As(typeof(IRequestHandler<,>))
                 .AsImplementedInterfaces();
-            
+
             builder
                 .RegisterGeneric(typeof(GenericGetOneQuery<>))
                 .As(typeof(IRequest<>));
@@ -69,7 +71,7 @@ namespace BuildIt.Core.Api
                 .RegisterGeneric(typeof(GenericGetOneHandler<,>))
                 .As(typeof(IRequestHandler<,>))
                 .AsImplementedInterfaces();
-            
+
             builder
                 .RegisterGeneric(typeof(GenericCreateCommand<>))
                 .As(typeof(IRequest<>));
@@ -78,7 +80,7 @@ namespace BuildIt.Core.Api
                 .RegisterGeneric(typeof(GenericCreateHandler<,>))
                 .As(typeof(IRequestHandler<,>))
                 .AsImplementedInterfaces();
-            
+
             builder
                 .RegisterGeneric(typeof(GenericUpdateCommand<>))
                 .As(typeof(IRequest<>));
@@ -87,21 +89,17 @@ namespace BuildIt.Core.Api
                 .RegisterGeneric(typeof(GenericUpdateHandler<,>))
                 .As(typeof(IRequestHandler<,>))
                 .AsImplementedInterfaces();
-            
+
             builder
                 .RegisterGeneric(typeof(GenericDeleteCommand<>))
                 .As(typeof(IRequest<>));
-            
+
             builder
                 .RegisterGeneric(typeof(GenericDeleteHandler<,>))
                 .As(typeof(IRequestHandler<,>))
                 .AsImplementedInterfaces();
-
-            builder
-                .RegisterType(typeof(GenericDbContext))
-                .AsImplementedInterfaces();
         }
-        
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();

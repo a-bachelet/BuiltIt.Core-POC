@@ -14,7 +14,8 @@ namespace BuildIt.Core.Domain.FeatureProviders
         {
             var assembly = GenericDataService.GetGenericAssembly();
 
-            var candidates = assembly.GetExportedTypes().Where(x => !x.IsAbstract);
+            var candidates = assembly.GetTypes()
+                .Where(x => x.BaseType is { } && x.BaseType == typeof(AbstractEntity));
 
             foreach (var candidate in candidates)
                 feature.Controllers.Add(

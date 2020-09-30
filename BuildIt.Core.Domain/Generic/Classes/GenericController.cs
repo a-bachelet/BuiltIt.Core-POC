@@ -1,6 +1,4 @@
-using System;
 using System.Threading.Tasks;
-using Autofac;
 using BuildIt.Core.Domain.Attributes;
 using BuildIt.Core.Domain.Generic.Interfaces;
 using MediatR;
@@ -37,7 +35,8 @@ namespace BuildIt.Core.Domain.Generic.Classes
         }
 
         [HttpPut("/[controller]/{guid}")]
-        public async Task<ActionResult<GenericUpdateViewModel<T>>> Update([FromRoute, FromBody] GenericUpdateCommand<T> request)
+        public async Task<ActionResult<GenericUpdateViewModel<T>>> Update(
+            [FromRoute] [FromBody] GenericUpdateCommand<T> request)
         {
             return Ok(await _mediator.Send(request));
         }

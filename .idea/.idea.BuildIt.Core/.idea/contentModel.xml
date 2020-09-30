@@ -25,13 +25,20 @@
       <e p="BuildIt.Core.Domain" t="IncludeRecursive">
         <e p="Attributes" t="Include">
           <e p="GenericControllerAttribute.cs" t="Include" />
+          <e p="GenericCreateDTOAttribute.cs" t="Include" />
+          <e p="GenericSubEntityAttribute.cs" t="Include" />
         </e>
         <e p="BuildIt.Core.Domain.csproj" t="IncludeRecursive" />
+        <e p="Database" t="Include">
+          <e p="GenericDbContext.cs" t="Include" />
+        </e>
         <e p="FeatureProviders" t="Include">
           <e p="GenericControllerFeatureProvider.cs" t="Include" />
         </e>
         <e p="Generic" t="Include">
           <e p="Classes" t="Include">
+            <e p="AbstractEntity.cs" t="Include" />
+            <e p="AbstractEntityDTO.cs" t="Include" />
             <e p="GenericController.cs" t="Include" />
             <e p="GenericCreateCommand.cs" t="Include" />
             <e p="GenericCreateHandler.cs" t="Include" />
@@ -53,32 +60,25 @@
             <e p="IGenericController.cs" t="Include" />
           </e>
         </e>
+        <e p="Migrations" t="Include">
+          <e p="20200928202903_Initial.Designer.cs" t="Include" />
+          <e p="20200928202903_Initial.cs" t="Include" />
+          <e p="20200929190751_Add_Artist_Entity.Designer.cs" t="Include" />
+          <e p="20200929190751_Add_Artist_Entity.cs" t="Include" />
+          <e p="20200929192425_Add_Artist_Entity_Two.Designer.cs" t="Include" />
+          <e p="20200929192425_Add_Artist_Entity_Two.cs" t="Include" />
+          <e p="GenericDbContextModelSnapshot.cs" t="Include" />
+        </e>
         <e p="Services" t="Include">
           <e p="Classes" t="Include">
             <e p="GenericDataService.cs" t="Include" />
           </e>
-          <e p="Interfaces" t="Include" />
         </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
               <e p="BuildIt.Core.Domain.AssemblyInfo.cs" t="Include" />
-            </e>
-          </e>
-        </e>
-      </e>
-      <e p="BuildIt.Core.Infrastructure" t="IncludeRecursive">
-        <e p="BuildIt.Core.Infrastructure.csproj" t="IncludeRecursive" />
-        <e p="Database" t="Include">
-          <e p="GenericDbContext.cs" t="Include" />
-          <e p="GenericDbContextFactory.cs" t="Include" />
-        </e>
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="netcoreapp3.1" t="Include">
-              <e p="BuildIt.Core.Infrastructure.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
         </e>
